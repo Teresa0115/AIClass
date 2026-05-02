@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>課程總覽 - AI 新手第一步</title>
+    <title>AI 新手入門課程 - 課程目錄</title>
     <style>
+        :root {
+            --bg: #fffaf3;
+            --card: #ffffff;
+            --text: #2b2b2b;
+            --muted: #666666;
+            --main: #f2b66d;
+            --main-dark: #d8913f;
+            --soft: #fff0dc;
+            --border: #ead7bd;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -16,21 +27,21 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', sans-serif;
-            background-color: #FAF7F3;
-            color: #3C3C3C;
-            line-height: 1.8;
+            font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
         }
 
         /* Header */
         header {
             background: white;
-            padding: 1rem 0;
-            border-bottom: 1px solid #E8E8E8;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--border);
         }
 
         .header-inner {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
             display: flex;
@@ -39,145 +50,206 @@
         }
 
         .logo {
-            font-size: 1.2rem;
-            font-weight: 700;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
             text-decoration: none;
-            color: #3C3C3C;
         }
 
         .back-link {
+            color: var(--muted);
             text-decoration: none;
-            color: #999;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
         }
 
         .back-link:hover {
-            color: #F4B63F;
+            color: var(--main);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #fff8f0 0%, var(--soft) 100%);
+        }
+
+        .hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: var(--soft);
+            color: var(--main-dark);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 2rem;
         }
 
         /* Main Content */
-        main {
-            max-width: 900px;
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
         }
 
-        .course-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .course-header h1 {
-            font-size: 2.2rem;
-            color: #2C2C2C;
+        .section-title {
+            font-size: 2rem;
             margin-bottom: 1rem;
-            font-weight: 700;
+            text-align: center;
+            color: var(--text);
         }
 
-        .course-header p {
-            font-size: 1.05rem;
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
+        .section-desc {
+            text-align: center;
+            color: var(--muted);
+            margin-bottom: 3rem;
+            font-size: 1rem;
         }
 
-        /* Course Grid */
-        .course-grid {
+        /* 課程卡片 */
+        .lessons-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-bottom: 4rem;
         }
 
         .lesson-card {
             background: white;
-            border-radius: 12px;
-            overflow: hidden;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
             text-decoration: none;
             color: inherit;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
         }
 
         .lesson-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--main);
         }
 
-        .lesson-number-badge {
-            background: linear-gradient(135deg, #F4B63F 0%, #D8913F 100%);
+        .lesson-num-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--main) 0%, var(--main-dark) 100%);
             color: white;
-            padding: 2rem;
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-
-        .lesson-info {
-            padding: 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .lesson-info h3 {
-            font-size: 1.2rem;
-            color: #2C2C2C;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .lesson-info p {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.8rem;
             margin-bottom: 1.5rem;
+        }
+
+        .lesson-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .lesson-card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
             flex-grow: 1;
         }
 
-        .lesson-link {
-            display: inline-block;
-            color: #F4B63F;
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.3s ease;
+        /* 課程資訊 */
+        .course-info {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
-        .lesson-link:hover {
-            color: #D8913F;
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        /* Navigation */
-        .course-nav {
+        .info-item {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #E8E8E8;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
+        .info-item h4 {
+            color: var(--main-dark);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .info-item p {
+            color: var(--text);
+            font-size: 1.3rem;
             font-weight: 600;
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--text) 0%, #3c3c3c 100%);
+            border-radius: 16px;
+            color: white;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.95rem 2.5rem;
+            background: white;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            font-size: 0.95rem;
         }
 
-        .btn-primary {
-            background: #F4B63F;
-            color: #2C2C2C;
-        }
-
-        .btn-primary:hover {
-            background: #D8913F;
-            color: white;
-            transform: translateY(-2px);
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
         }
 
         /* Footer */
@@ -185,132 +257,148 @@
             background: white;
             padding: 2rem;
             text-align: center;
-            color: #999;
-            font-size: 0.85rem;
-            border-top: 1px solid #E8E8E8;
-            margin-top: 4rem;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
         }
 
-        /* Responsive */
+        /* RWD */
         @media (max-width: 768px) {
-            main {
+            .hero {
+                padding: 2.5rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .container {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .lessons-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .cta-section {
                 padding: 2rem 1rem;
             }
+        }
 
-            .course-header h1 {
-                font-size: 1.8rem;
+        @media (max-width: 600px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 1rem;
             }
 
-            .course-header p {
+            .logo {
                 font-size: 0.95rem;
             }
 
-            .course-grid {
-                grid-template-columns: 1fr;
+            .back-link {
+                font-size: 0.85rem;
             }
 
-            .lesson-number-badge {
-                padding: 1.5rem;
-                font-size: 2rem;
-            }
-
-            .lesson-info {
-                padding: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header-inner {
-                padding: 0 1rem;
-            }
-
-            main {
-                padding: 2rem 1rem;
-            }
-
-            .course-header h1 {
-                font-size: 1.5rem;
-            }
-
-            .lesson-info h3 {
-                font-size: 1.1rem;
+            .hero-tag {
+                font-size: 0.8rem;
+                padding: 0.4rem 1rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="header-inner">
-            <a href="index.html" class="logo">AI 新手第一步</a>
+            <a href="index.html" class="logo">🤖 AI 新手第一步</a>
             <a href="index.html" class="back-link">← 回首頁</a>
         </div>
     </header>
 
-    <main>
-        <div class="course-header">
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-tag">給小老闆、接案者、創業者的 AI 入門課</div>
             <h1>AI 新手入門課程</h1>
-            <p>這是一套給小老闆與完全新手看的 AI 入門課。不需要技術背景，也不需要先懂英文。只要願意一步一步練習，你就可以開始用 AI 改變你的工作方式。</p>
+            <p>5 堂課，每堂 15-20 分鐘，用你的真實工作來練習。不需要技術背景，也不需要英文好。</p>
         </div>
+    </section>
 
-        <div class="course-grid">
-            <!-- Lesson 1 -->
-            <a href="lessons/lesson-1.html" class="lesson-card">
-                <div class="lesson-number-badge">1</div>
-                <div class="lesson-info">
-                    <h3>AI 到底是什麼？小老闆怎麼開始用？</h3>
-                    <p>不用會寫程式，也不用先懂技術。先學會把 AI 當作一個助理，看它能幫你做什麼。</p>
-                    <span class="lesson-link">進入課程 →</span>
-                </div>
-            </a>
+    <!-- Main Content -->
+    <div class="container">
+        <!-- 課程卡片 -->
+        <section>
+            <h2 class="section-title">5 堂課課程</h2>
+            <p class="section-desc">每堂課都有可以直接複製使用的實作練習</p>
 
-            <!-- Lesson 2 -->
-            <a href="lessons/lesson-2.html" class="lesson-card">
-                <div class="lesson-number-badge">2</div>
-                <div class="lesson-info">
+            <div class="lessons-grid">
+                <a href="lesson-1.html" class="lesson-card">
+                    <div class="lesson-num-circle">1</div>
+                    <h3>AI 到底是什麼？</h3>
+                    <p>小老闆怎麼開始用？認識 AI 工具，找到最適合你的應用方向。</p>
+                </a>
+
+                <a href="lesson-2.html" class="lesson-card">
+                    <div class="lesson-num-circle">2</div>
                     <h3>怎麼問 AI 才會得到好答案？</h3>
-                    <p>學會寫出清楚的 Prompt，讓 AI 理解你真正想要什麼。一句話的差距，結果可能差十倍。</p>
-                    <span class="lesson-link">進入課程 →</span>
-                </div>
-            </a>
+                    <p>學會寫指令，讓 AI 給出更準確的回答。一句話變成好文案。</p>
+                </a>
 
-            <!-- Lesson 3 -->
-            <a href="lessons/lesson-3.html" class="lesson-card">
-                <div class="lesson-number-badge">3</div>
-                <div class="lesson-info">
+                <a href="lesson-3.html" class="lesson-card">
+                    <div class="lesson-num-circle">3</div>
                     <h3>用 AI 寫出一篇小店貼文</h3>
-                    <p>用 AI 寫 Facebook 和 Instagram 貼文。不再卡在空白螢幕，五分鐘產出一篇初稿。</p>
-                    <span class="lesson-link">進入課程 →</span>
-                </div>
-            </a>
+                    <p>Facebook、Instagram 貼文，讓 AI 快速產出可用的初稿。</p>
+                </a>
 
-            <!-- Lesson 4 -->
-            <a href="lessons/lesson-4.html" class="lesson-card">
-                <div class="lesson-number-badge">4</div>
-                <div class="lesson-info">
+                <a href="lesson-4.html" class="lesson-card">
+                    <div class="lesson-num-circle">4</div>
                     <h3>用 AI 整理商品介紹與客服回覆</h3>
-                    <p>讓 AI 幫你整理商品資訊、寫出吸引人的描述、回覆客人常見問題。省時又省力。</p>
-                    <span class="lesson-link">進入課程 →</span>
-                </div>
-            </a>
+                    <p>把重複工作交給 AI，節省時間，保持品牌聲音一致。</p>
+                </a>
 
-            <!-- Lesson 5 -->
-            <a href="lessons/lesson-5.html" class="lesson-card">
-                <div class="lesson-number-badge">5</div>
-                <div class="lesson-info">
+                <a href="lesson-5.html" class="lesson-card">
+                    <div class="lesson-num-circle">5</div>
                     <h3>用 AI 規劃你的第一個網站首頁</h3>
-                    <p>用 AI 幫你想網站文案、規劃首頁結構。把自己的品牌故事說得清楚又吸引人。</p>
-                    <span class="lesson-link">進入課程 →</span>
+                    <p>從無到有，用 AI 協助規劃網站架構和內容。</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- 課程資訊 -->
+        <section class="course-info">
+            <h2 class="section-title">你會學到什麼</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h4>⏱️ 課程時長</h4>
+                    <p>約 2 小時</p>
                 </div>
-            </a>
-        </div>
+                <div class="info-item">
+                    <h4>💰 費用</h4>
+                    <p>完全免費</p>
+                </div>
+                <div class="info-item">
+                    <h4>📱 格式</h4>
+                    <p>線上課程</p>
+                </div>
+            </div>
+        </section>
 
-        <div class="course-nav">
-            <a href="index.html" class="btn btn-primary">回到首頁</a>
-        </div>
-    </main>
+        <!-- CTA -->
+        <section class="cta-section">
+            <h2>準備好開始了嗎？</h2>
+            <p>第一堂課只需要 15 分鐘，立刻看到 AI 如何幫你工作</p>
+            <a href="lesson-1.html" class="cta-button">開始第一課</a>
+        </section>
+    </div>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 AI 新手第一步 | 給完全初學者的 AI 課程</p>
+        <p>&copy; 2026 AI 新手第一步。Teresa 出品。</p>
     </footer>
 </body>
 </html>
